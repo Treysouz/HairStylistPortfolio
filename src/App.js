@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./Components/navbar";
 import Router from "./router";
-import Header from "./Components/header";
+import $ from "jquery";
 
 export default class App extends Component {
   constructor() {
@@ -13,15 +13,21 @@ export default class App extends Component {
       ),
     };
   }
+
+  componentDidMount() {
+    this.getNewPage(this.state.currentPage);
+  }
   getNewPage = (page) => {
     this.setState({
       currentPage: page,
     });
+
+    $(".navLink").removeClass("active");
+    $("[href='" + page + "']").addClass("active");
   };
   render() {
     return (
       <main>
-        <Header getNewPage={this.getNewPage}></Header>
         <NavBar
           currentPage={this.state.currentPage}
           getNewPage={this.getNewPage}

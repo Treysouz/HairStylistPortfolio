@@ -1,14 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald&family=Caveat&display=swap');
+/* ------- Global Stylings -----*/
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-main {
-  width: 100vw;
+::-webkit-scrollbar {
+  width: .5vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #312c29;
+}
+
+::-webkit-scrollbar-thumb {
+  background: palevioletred;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+html, body {
+  min-width: 350px;
   height: 100vh;
-  overflow: hidden;
+  width: 100vw;
+  position: fixed;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #b5b4b0;
 }
 
 a {
@@ -38,77 +64,152 @@ strong {
   text-shadow: 0px 0px 2px black;
 }
 
-p, span, a {
+p, span, a, li {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 2px;
 }
 
+section {
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 1s;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(0, 50%)
+  }
+  to {
+    transform: translate(0, 0)
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translate(50%, 0)
+  }
+  to {
+    transform: translate(0, 0)
+  }
+}
+
+/* End Animations */
+
+/* ------- End Global Stylings -----*/
+
+/* ------- Header Stylings -----*/
+
 header {
   position: fixed;
   width: 15%;
-  
   z-index: 1;
+  left: 0%;
+  top: 0%;
 }
 
 header img {
   width: 100%;
-  border: 3px ridge palevioletred;
+  border: 3px solid palevioletred;
   border-radius: 100%;
-  box-shadow: 2px 2px 10px black;
+  box-shadow: 2px 5px 10px black;
+  transition: transform 1s, box-shadow 1s;
 }
 
+header img:hover {
+  transform: rotate(10deg);
+  box-shadow: 2px 2px 10px gray;
+  opacity: .95;
+}
+
+/* -------End  Header Stylings -----*/
+
+/* ------- Nav Stylings -----*/
+
 nav {
-  background-image: linear-gradient(30deg, #312c29 80%, palevioletred);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #312c29;
+  background-image: radial-gradient(#312c29 50%, black);
   position: fixed;
   left: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-end;
-  width: 100%;
-  padding-left: 15%;
+  width: 99.6vw;
+  padding-left: 13%;
   height: 15%;
-  border-top: 3px ridge palevioletred;
   border-bottom: 3px ridge palevioletred;
   border-right: 3px ridge palevioletred;
-  z-index: 0;
-  box-shadow: 2px 2px 10px black;
-  border-radius: 0 30px 30px 0;
+  z-index: 3;
+  box-shadow: -10px 2px 10px black;
+  border-radius: 0 0 30px 0;
+}
+
+nav .websiteTitle {
+  display: inline-block;
+  padding-left: 2%;
+  border-bottom: 3px ridge palevioletred;
+}
+
+nav .websiteTitle h1 {
+  color: lightgray;
+  text-shadow: 1px 1px palevioletred;
+  text-transform: uppercase;
+  font-family: "Oswald", "serif";
+  font-size: 3rem;
+  letter-spacing: 10px;
+  padding-top: 1%;
 }
 
 nav .contactBar {
-  width: 100%;
+  width: 90%;
   text-align: center;
+  align-items: center;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav .contactBar .contactInfo {
   width: auto;
   display: inline-block;
   white-space: nowrap;
-  padding: 0 5%;
 }
 
 nav .contactBar .contactInfo i {
   color: palevioletred;
   text-shadow: 2px 2px black;
-  font-size: 2rem;
-  padding-right: 10%;
+  font-size: 1.5rem;
+  padding-right: 5%;
+  vertical-align: middle;
 }
 
 nav .contactBar .contactInfo span, nav .contactBar .contactInfo a {
- 
   color: white;
   opacity: .5;
   font-size: 1.2rem;
   vertical-align: text-bottom;
 }
 
-nav .contactBar .contactInfo span:hover,  nav .contactBar .contactInfo a:hover {
+nav .contactBar .contactInfo span:hover, nav .contactBar .contactInfo a:hover {
   opacity: 1;
   cursor: pointer;
+}
 
+nav .navLinksContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 nav .navLink p {
@@ -116,20 +217,23 @@ nav .navLink p {
   font-family: "Oswald", "serif";
   font-size: 2rem;
   letter-spacing: 2px;
-  text-transform: uppercase;
   width: 100%;
   text-shadow: 1px 1px black;
+  transition: text-shadow .5s, opacity .5s;
 }
 
 nav .navLink:hover p {
-  opacity: .5;
+  text-shadow: 0px 0px 1px lightgray;
+  opacity: .6;
 }
 
-section {
-  padding-top: 7.5%;
-  height: 100%;
-  width: 100%;
+nav .active p {
+  text-shadow: 0px 0px 3px darkorchid;
 }
+
+/* ------- End Nav Stylings -----*/
+
+/* ------- Home Stylings -----*/
 
 .home {
   background-image: url("./Assets/Images/backgroundImage.jpeg");
@@ -138,8 +242,11 @@ section {
   background-position-x: 50%;
 }
 
+/* -------End  Home Stylings -----*/
+
+/* ------- About Me Stylings -----*/
+
 .about {
-  background-color: #b5b4b0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -152,7 +259,7 @@ section {
   box-shadow: inset 0px 0px 100px rgb(48, 44, 43);
   background-image: url("./Assets/Images/aboutMe.jpeg");
   background-size: cover;
-  background-position-y: 20%;
+  background-position-y: 7.5%;
   background-repeat: no-repeat;
 }
 
@@ -161,7 +268,8 @@ section {
   background-color: #302c2b;
   box-shadow: 2px 2px 5px black;
   padding: 2%;
-  margin-right: 5%;
+  margin: 7.5% 5% 0 0;
+  animation: slideUp 1s;
 }
 
 .about .bio p {
@@ -170,3 +278,261 @@ section {
   padding: 5%;
   line-height: 2.5rem;
 }
+
+/* ------- End About Me Stylings -----*/
+
+/* ------- Portfolio Stylings -----*/
+
+.portfolio {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 100px;
+}
+
+.portfolio .bottomFade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  box-shadow: inset 0px -10px 10px black;
+  pointer-events: none;
+}
+
+.portfolio .column {
+  max-width: 33%;
+}
+
+.portfolio .column img {
+  width: 100%;
+  height: auto;
+  transition: box-shadow .5s;
+}
+
+.portfolio .column img:hover {
+  box-shadow: 2px 2px 7px 2px black;
+  cursor: pointer;
+}
+
+.portfolio .overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 7.5%;
+  z-index: 0;
+}
+
+.portfolio .overlay img {
+  width: auto;
+  height: 75%;
+}
+
+/* -------End Portfolio Stylings -----*/
+
+/* -------Services Stylings -----*/
+
+.services {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url("./Assets/Images/backgroundImage.jpeg");
+  background-size: fill;
+  background-repeat: no-repeat;
+  background-position-y: 30%;
+  background-position-x: 160%;
+  background-size: 120%;
+}
+
+.services .background {
+  box-shadow: inset 0px 0px 30px 10px black;
+  filter: contrast(80%);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.services .servicesList {
+  background-color: rgb(48, 44, 43);
+  box-shadow: 2px 2px 5px black;
+  padding: 2%;
+  width: 40%;
+  position: absolute;
+  right: 5%;
+  height: auto;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  animation: slideLeft 1s;
+}
+
+.services .servicesList ul {
+  margin: 0 0 2% 7%;
+}
+
+.services .servicesList li {
+  color: palevioletred;
+}
+
+.services .servicesList p, .services .servicesList span {
+  color: white;
+  text-shadow: 0px 0px 3px black;
+  line-height: 2.5rem;
+}
+
+.services .servicesList span {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+
+.services .servicesPic {
+  height: 100%;
+  width: 45%;
+  box-shadow: inset 0px 0px 100px rgb(48, 44, 43);
+  background-image: url("./Assets/Images/IMG-20200423-WA0008.jpg");
+  background-size: cover;
+  background-position-y: 20%;
+  background-repeat: no-repeat;
+}
+
+/* -------End Services Stylings -----*/
+
+/*Media Queries */
+
+@media(max-width: 1500px), (max-height:890px) {
+  nav .websiteTitle h1 {
+    font-size: 1.8rem;
+  }
+  nav .contactBar .contactInfo span, nav .contactBar .contactInfo a {
+    font-size: 1rem;
+  }
+  nav .navLink p {
+    font-size: 1.5rem;
+  }
+  p, span, a, li {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .about .bio p, .services .servicesList p, .services .servicesList span {
+    line-height: 2rem;
+  }
+}
+
+@media(max-width: 1250px), (max-height:800px) {
+  nav .contactBar .contactInfo span, nav .contactBar .contactInfo a {
+    font-size: 1rem;
+  }
+  p, span, a, li, .services .servicesList span {
+    font-size: 1rem;
+  }
+  .about .bio p, .services .servicesList p, .services .servicesList span {
+    line-height: 1.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media(max-width:1100px), (max-height:600px) {
+  nav .contactBar .contactInfo span {
+    display: none;
+  }
+  p, span, a, li, .services .servicesList span {
+    font-size: .8rem;
+  }
+  .about .bio p, .services .servicesList p, .services .servicesList span {
+    line-height: 1.3rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media(max-width:850px), (max-height:500px) {
+  nav .websiteTitle h1 {
+    font-size: 1.5rem;
+    padding-left: 5%;
+  }
+  .home {
+    box-shadow: none;
+  }
+  .services {
+    background-position-y: 50%;
+    background-position-x: 50%;
+    background-size: cover;
+    justify-content: center;
+  }
+  .services .servicesList {
+    background-color: rgba(48, 44, 43, .9);
+    width: 75%;
+    right: 0;
+    position: relative;
+  }
+  .about .bioPic {
+    width: 100%;
+  }
+  .about .bio {
+    position: absolute;
+    width: 75%;
+    margin: 0;
+    background-color: rgba(48, 44, 43, .9);
+  }
+  .about {
+    justify-content: center;
+  }
+}
+
+@media(max-width:600px), (max-height:400px) {
+  .about .bio p, .services .servicesList p, .services .servicesList span {
+    line-height: 1rem;
+  }
+  nav .websiteTitle h1 {
+    font-size: 1rem;
+    letter-spacing: 4px;
+  }
+  nav .navLink p {
+    font-size: 1rem;
+  }
+  .about .bio, .services .servicesList {
+    width: 95%;
+    justify-self: center;
+    align-self: center;
+    margin-top: 10%;
+  }
+}
+
+@media(max-width: 400px) {
+  header img {
+    border: 2px solid palevioletred;
+    margin-top: 5%;
+    box-shadow: none;
+  }
+  nav {
+    width: 100%;
+    border-radius: 0 0 30px 30px;
+    padding-left: 0;
+    border-right: none;
+  }
+  nav .contactBar {
+    padding-left: 13%;
+  }
+}
+
+/*End Media Queries */
