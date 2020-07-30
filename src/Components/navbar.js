@@ -66,7 +66,9 @@ export default class NavBar extends Component {
           >
             <p>Services</p>
           </a>
-          <a className="navLink" href="#shop">
+          <a className="navLink" href="#shop" onClick={() => {
+                this.props.getNewPage("#shop");
+              }}>
             <p>Shop</p>
           </a>
         </div>

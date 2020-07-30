@@ -401,6 +401,10 @@ nav .active p {
   background-repeat: no-repeat;
 }
 
+.shop{
+  padding-top: 15%;
+}
+
 /* -------End Services Stylings -----*/
 
 /*Media Queries */
@@ -520,7 +524,7 @@ nav .active p {
 
 @media(max-width: 400px) {
   header img {
-    border: 2px solid palevioletred;
+    border: 2px solid #d87093;
     margin-top: 5%;
     box-shadow: none;
   }
